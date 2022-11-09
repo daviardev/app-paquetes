@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = () => {
     return <>
-        Esto es la página de inicio
+        <h1>Esto es una prueba del inicio</h1>
     </>
 }
 
