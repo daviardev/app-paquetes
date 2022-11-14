@@ -1,7 +1,14 @@
+:root {
+  --gray-color: #6b7688;
+  --secondary-color: #313bac;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
 
 body,
