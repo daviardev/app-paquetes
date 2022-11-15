@@ -1,0 +1,37 @@
+.frem{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url('/src/assets/gifs.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.frem p{
+    position: absolute;
+    top: 3rem;
+    font-size: 7rem;
+    color: var(--first-color);
+}
+.frem h2{
+    position: absolute;
+    bottom: 27rem;
+    font-size: 34px;
+}
+.frem h5{
+    position: absolute;
+    bottom: 6rem;
+    color: #9c9c9c;
+}
+.frem a{
+    position: absolute;
+    bottom: 1rem;
+    background: linear-gradient(45deg, var(--first-color-dark), var(--first-color));
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+    border-radius: 13px;
+}
