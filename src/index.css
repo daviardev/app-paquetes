@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root{
   --first-color: #9660fb;
@@ -6,7 +6,7 @@
   --first-color-light: #A49EAC;
   --first-color-lighten: #F2F2F2;
 
-  --body-font: 'Open Sans', sans-serif;
+  --body-font: 'Poppins', sans-serif;
   --h1-font-size: 1.5rem;
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
