@@ -1,0 +1,78 @@
+.card__container {
+    justify-content: center;
+    display: flex;
+
+    @media (max-width: 1220px) {
+        padding: 0;
+    }
+}
+
+.card {
+    height: auto;
+    background: #ffffff;
+    border: 1px solid #F0F0F0;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0px -1px 10px rgb(199 199 199 / 25%);
+    width: 31%;
+    margin: 1%;
+    -webkit-transition: all 200ms ease-out;
+    -moz-transition: all 200ms ease-out;
+    -ms-transition: all 200ms ease-out;
+    -o-transition: all 200ms ease-out;
+    transition: all 200ms ease-out;
+
+    a {
+        pointer-events: none;
+    }
+
+    &::before {
+        top: 25%;
+        width: 3px;
+        height: 50%;
+        content: '';
+        position: absolute;
+        background: var(--first-color);
+    }
+
+    &:hover {
+        box-shadow: 0px -1px 23px rgb(199 199 199 / 60%);
+        transform: scale(1.01);
+        transition: all 200ms ease-out;
+    }
+
+    & > a {
+        border: none;
+        box-shadow: none;
+        color: gray;
+        display: block;
+    }
+}
+
+.title {
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: .5px;
+    transition: all 200ms ease-out;
+
+    @media screen and (max-width: 750px) {
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: .3375px;
+    }
+}
+
+.text {
+    font-size: 15px;
+    font-weight: 400;
+    margin: 10%;
+    line-height: 22px;
+    letter-spacing: .5px;
+
+    @media screen and (max-width: 750px) {
+        font-size: 13px;
+        line-height: 20px;
+        letter-spacing: .281225px;
+    }
+}
