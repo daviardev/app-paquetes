@@ -16,8 +16,8 @@ const Home = () => {
             <p className='card__p'>La distancia mas corta entre usted y sus paquetes no es una linea recta, es PQENTREGA.</p>
             <div className="search__container">
                 <p>Consultar envío</p>
-                <input type="text" placeholder='Ingresa el # de guia'/>
-                <Link to='/envio'>
+                <input type="text" placeholder='Ingresa el # de envío' required />
+                <Link to='/consulta de guía'>
                     <button>
                         <WiDirectionRight className='icon' />
                     </button>
