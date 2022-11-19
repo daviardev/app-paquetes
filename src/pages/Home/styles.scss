@@ -1,7 +1,3 @@
-.home__container {
-    min-height: 100vh;
-}
-
 .card__content {
     height: 392px;
     background: linear-gradient(0deg, #dadada96, #f8f7f796);
@@ -125,5 +121,13 @@
 
    .img {
     opacity: 0;
+    left: 0;
    }
+}
+
+@media screen and (max-width: 1024px) {
+    .img {
+        opacity: 0;
+        left: 0;
+    }
 }
