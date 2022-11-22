@@ -1,11 +1,26 @@
 import React, { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+
+import Google from '../../components/Icons/Google'
+
+import { loginGoogle } from '../../services/client'
 
 import './styles.scss'
 
 const NavBar = () => {
-    const [toggle, setToggle] = useState(false);
-  
+    const navigate = useNavigate()
+    const [toggle, setToggle] = useState(false)
+
+    const handleSubmit = e => {
+      e.preventDefault()
+      
+      try {
+        loginGoogle()
+        navigate('/')
+      } catch (err) {
+        console.error(err)
+      }
+    }
     return <>
       <header className='app-navbar'>
         <section className="navbar-container">
@@ -21,11 +36,12 @@ const NavBar = () => {
         <NavLink onClick={() => setToggle(false)} to='/envio'>Envio</NavLink>
         <NavLink onClick={() => setToggle(false)} to='/sobre nosotros'>Sobre nosotros</NavLink>
         <NavLink onClick={() => setToggle(false)} to='/contacto'>Contacto</NavLink>
+        <button onClick={handleSubmit} id='googleAuth' className="btn btn-button">
+          <Google width={12} height={12} />
+            Ingresar
+        </button>
       </nav>
       </section>
-        <Link to='/ingresar'>
-          <button className="btn btn-button">Ingresar</button>
-        </Link>
     </header>
     </>
 }
