@@ -1,8 +1,13 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+
+import { useAuthContext } from '../../context/AuthContext'
 
 import './styles.scss'
 
 const Invoice = () => {
+    const appContext = useAuthContext()
+    console.log(appContext)
     return <>
         <div className='container'>
             <header>Factura</header>
@@ -43,12 +48,21 @@ const Invoice = () => {
                                 <option value='barranquilla'>Línea</option>
                             </select>
                         </div>
+
+                        <div className="input-field">
+                            <label>Número de documento</label>
+                            <input type="number" placeholder='Ingrese su número de documento' />
+                        </div>
                     </div>
                 </div>
-                    <button>
-                        <span className='btnText'>Realizar pago</span>
-                        <i className='uil uil-navigator'></i>
-                    </button>
+                <center>
+                    <NavLink to='/detalle'>
+                        <button>
+                            <span className='btnText'>Realizar pago</span>
+                            <i className='uil uil-navigator'></i>
+                        </button>
+                    </NavLink>
+                </center>
                 </div> 
             </form>
         </div>
