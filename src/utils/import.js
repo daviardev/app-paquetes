@@ -1,7 +1,7 @@
 // Import pages
 import Home from '../pages/Home'
-import Login from '../pages/Login'
 import Invoice from '../pages/Invoice'
+import Detail from '../pages/Detail'
 import NotFound from '../pages/NotFound'
 import SendPackage from '../pages/SendPackage'
 
@@ -19,7 +19,7 @@ import Card from '../components/Card'
 export {
     Home,
     Card,
-    Login,
+    Detail,
     Invoice,
     NotFound,
     FaUserAlt,
