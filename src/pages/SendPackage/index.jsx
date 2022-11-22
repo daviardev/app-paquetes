@@ -1,10 +1,13 @@
 import React from 'react'
-
 import { NavLink } from 'react-router-dom'
+
+import { useAuthContext } from '../../context/AuthContext'
 
 import './styles.scss'
 
 const SendPackage = () => {
+    const appContext = useAuthContext()
+    console.log(appContext)
     return (
         <div className='container'>
             <header>Solicitud de envío de paquetes</header>
@@ -36,6 +39,11 @@ const SendPackage = () => {
                                 <option value='documento'>Documento</option>
                                 <option value='paquete'>Paquete</option>
                             </select>
+                        </div>
+
+                        <div className="input-field">
+                            <label>Número de documento</label>
+                            <input type="number" placeholder='Ingrese su número de documento' />
                         </div>
 
                         <div className='input-field'>
@@ -87,17 +95,24 @@ const SendPackage = () => {
                             </select>
                         </div>
 
+                        <div className="input-field">
+                            <label>Número de documento</label>
+                            <input type="number" placeholder='Ingrese el número de documento' />
+                        </div>
+
                         <div className='input-field'>
                             <label>Dirección de residencia</label>
                             <input type='text' placeholder='Ingrese la dirección del destinatario' required />
                         </div>
                     </div>
-                    <NavLink to='/factura'>
-                        <button>
-                            <span className='btnText'>Enviar</span>
-                            <i className='uil uil-navigator'></i>
-                        </button>
-                    </NavLink>
+                    <center>
+                        <NavLink to='/factura'>
+                            <button>
+                                <span className='btnText'>Enviar</span>
+                                <i className='uil uil-navigator'></i>
+                            </button>
+                        </NavLink>
+                    </center>
                 </div> 
             </div>
             </form>
