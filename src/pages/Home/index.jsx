@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { WiDirectionRight } from 'react-icons/wi'
 
@@ -17,11 +17,11 @@ const Home = () => {
             <div className="search__container">
                 <p>Consultar envío</p>
                 <input type="text" placeholder='Ingresa el # de envío' required />
-                <Link to='/consulta de guía'>
+                <NavLink to='/detalle'>
                     <button>
                         <WiDirectionRight className='icon' />
                     </button>
-                </Link>
+                </NavLink>
             </div>
         </div>
         <div className='img'/>
