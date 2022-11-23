@@ -1,13 +1,13 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-
-import { WiDirectionRight } from 'react-icons/wi'
 
 import { Card } from '../../utils/import'
+import { useAuth } from '../../context/AuthProvider'
 
 import './styles.scss'
 
 const Home = () => {
+    const { user } = useAuth()
+    console.log(user)
     return <>
     <div className="home__container">
         <div className="card__content">
@@ -17,11 +17,9 @@ const Home = () => {
             <div className="search__container">
                 <p>Consultar envío</p>
                 <input type="text" placeholder='Ingresa el # de envío' required />
-                <NavLink to='/detalle'>
                     <button>
-                        <WiDirectionRight className='icon' />
+                        >
                     </button>
-                </NavLink>
             </div>
         </div>
         <div className='img'/>
