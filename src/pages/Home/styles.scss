@@ -73,8 +73,8 @@
         position: absolute;
         width: 39px;
         height: 39px;
-        left: 82%;
-        bottom: -17px;
+        left: 85%;
+        bottom: 15px;
         background: var(--first-color);
         border-radius: 50%;
         border: none;
@@ -83,6 +83,12 @@
             background: var(--first-color-dark);
         }
     }
+}
+
+.icon {
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
 }
 
 .img {
