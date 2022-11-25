@@ -1,120 +1,164 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { useAuthContext } from '../../context/AuthContext'
+import { db } from '../../services/client'
+import { collection, addDoc } from 'firebase/firestore'
 
 import './styles.scss'
 
 const SendPackage = () => {
-    const appContext = useAuthContext()
-    console.log(appContext)
+    const [input, setInput] = useState({
+        // Datos cliente
+        paquete: '',
+        cc_cliente: '',
+        ciudad_cliente: '',
+        nombre_cliente: '',
+        telefono_cliente: '',
+        direccion_cliente: '',
+        // Datos recibe
+        cc_recibe: '',
+        pais_recibe: '',
+        ciudad_recibe: '',
+        nombre_recibe: '',
+        telefono_recibe: '',
+        direccion_recibe: ''
+    })
+
+    const handleChange = ({ target: {name, value} }) => {
+        setInput({ ...input, [name]: value })
+    }
+    const sendPack = async () => {
+        try {
+            return await addDoc(collection(db, 'envios'), {
+                // Datos cliente
+                paquete: input.paquete,
+                cc_cliente: input.cc_cliente,
+                ciudad_cliente: input.ciudad_cliente,
+                nombre_cliente: input.nombre_cliente,
+                telefono_cliente: input.telefono_cliente,
+                direccion_cliente: input.direccion_cliente,
+                // Datos recibe
+                cc_recibe: input.cc_recibe,
+                pais_recibe: input.pais_recibe,
+                ciudad_recibe: input.ciudad_recibe,
+                nombre_recibe: input.nombre_recibe,
+                telefono_recibe: input.telefono_recibe,
+                direccion_recibe: input.direccion_recibe
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    const handleSubmit = e => {
+        e.preventDefault()
+    }
     return (
         <div className='container'>
             <header>Solicitud de envío de paquetes</header>
-            <form action='#'>
-            <div className='form first'>
-                <div className='details personal'>
-                    <span className='title'>Información del cliente</span>
+            <form onSubmit={handleSubmit}>
+                <div className='form first'>
+                    <div className='details personal'>
+                        <span className='title'>Información del cliente</span>
 
-                    <div className='fields'>
-                        <div className='input-field'>
-                            <label>Nombre quien envía</label>
-                            <input type='text' placeholder='Ingrese sus nombres y apellidos' required />
-                        </div>
+                        <div className='fields'>
+                            <div className='input-field'>
+                                <label htmlFor='nombre_cliente'>Nombre quien envía</label>
+                                <input onChange={handleChange} type='text' name='nombre_cliente' placeholder='Ingrese sus nombres y apellidos' required />
+                            </div>
 
-                        <div className='input-field'>
-                            <label>Dirección de recogida</label>
-                            <input type='text' placeholder='Ingrese la dirección de su domicilio' required />
-                        </div>
+                            <div className='input-field'>
+                                <label htmlFor='direccion_cliente'>Dirección de recogida</label>
+                                <input onChange={handleChange} type='text' name='direccion_cliente' placeholder='Ingrese la dirección de su domicilio' required />
+                            </div>
 
-                        <div className='input-field'>
-                            <label>No. de contacto</label>
-                            <input type='number' placeholder='Ingrese su número de celular' required />
-                        </div>
+                            <div className='input-field'>
+                                <label htmlFor='telefono_cliente'>No. de contacto</label>
+                                <input onChange={handleChange} type='number' name='telefono_cliente' placeholder='Ingrese su número de celular' required />
+                            </div>
 
-                        <div className='input-field'>
-                            <label>Tipo de paquete</label>
-                            <select name='tipoPaquete' id='tipo_paquete'>
-                                <option disabled selected>Seleccione una opción</option>
-                                <option value='documento'>Documento</option>
-                                <option value='paquete'>Paquete</option>
-                            </select>
-                        </div>
+                            <div className='input-field'>
+                                <label htmlFor='paquete'>Tipo de paquete</label>
+                                <select onChange={handleChange} name='paquete'>
+                                    <option disabled selected>Seleccione una opción</option>
+                                    <option value='Documento'>Documento</option>
+                                    <option value='Paquete'>Paquete</option>
+                                </select>
+                            </div>
 
-                        <div className="input-field">
-                            <label>Número de documento</label>
-                            <input type="number" placeholder='Ingrese su número de documento' />
-                        </div>
+                            <div className="input-field">
+                                <label htmlFor='cc_cliente'>Número de documento</label>
+                                <input onChange={handleChange} type="number" name='cc_cliente' placeholder='Ingrese su número de documento' />
+                            </div>
 
-                        <div className='input-field'>
-                            <label>Ciudad</label>
-                            <select required>
-                                <option disabled selected>Seleccione una ciudad</option>
-                                <option value='santa-marta'>Santa Marta</option>
-                                <option value='barranquilla'>Barranquilla</option>
-                                <option value='cartagena'>Cartagena</option>
-                                <option value='bogota'>Bogotá</option>
-                            </select>
+                            <div className='input-field'>
+                                <label htmlFor='ciudad_cliente'>Ciudad</label>
+                                <select onChange={handleChange} name='ciudad_cliente' required>
+                                    <option disabled selected>Seleccione una ciudad</option>
+                                    <option value='Santa Marta'>Santa Marta</option>
+                                    <option value='Barranquilla'>Barranquilla</option>
+                                    <option value='Cartagena'>Cartagena</option>
+                                    <option value='Bogotá'>Bogotá</option>
+                                </select>
+                            </div>
                         </div>
+                    </div>
+
+                    <div className='details ID'>
+                        <span className='title'>Información del destinatario</span>
+
+                        <div className='fields'>
+                            <div className='input-field'>
+                                <label htmlFor='nombre_recibe'>Nombre quien recibe</label>
+                                <input onChange={handleChange} name='nombre_recibe' type='text' placeholder='Ingrese los nombres y apellidos' required />
+                            </div>
+
+                            <div className='input-field'>
+                                <label htmlFor='telefono_recibe'>No. de contacto</label>
+                                <input onChange={handleChange} name='telefono_recibe' type='number' placeholder='Ingrese el número de celular' required />
+                            </div>
+
+                            <div className='input-field'>
+                                <label htmlFor='ciudad_recibe'>Ciudad</label>
+                                <select onChange={handleChange} name='ciudad_recibe' required>
+                                    <option disabled selected>Seleccione una ciudad</option>
+                                    <option value='Santa Marta'>Santa Marta</option>
+                                    <option value='Barranquilla'>Barranquilla</option>
+                                    <option value='Cartagena'>Cartagena</option>
+                                    <option value='Bogotá'>Bogotá</option>
+                                </select>
+                            </div>
+
+                            <div className='input-field'>
+                                <label htmlFor='pais_recibe'>País</label>
+                                <select onChange={handleChange} name='pais_recibe' required>
+                                    <option disabled selected>Seleccione un país</option>
+                                    <option value='Colombia'>Colombia</option>
+                                    <option value='Estados Unidos'>Estados Unidos</option>
+                                    <option value='España'>España</option>
+                                    <option value='Argentina'>Argentina</option>
+                                </select>
+                            </div>
+
+                            <div className="input-field">
+                                <label htmlFor='cc_recibe'>Número de documento</label>
+                                <input onChange={handleChange} name='cc_recibe' type="number" placeholder='Ingrese el número de documento' />
+                            </div>
+
+                            <div className='input-field'>
+                                <label htmlFor='direccion_recibe'>Dirección de residencia</label>
+                                <input onChange={handleChange} name='direccion_recibe' type='text' placeholder='Ingrese la dirección del destinatario' required />
+                            </div>
+                        </div>
+                        <center>
+                            <NavLink to='/factura'>
+                                <button onClick={sendPack}>
+                                    <span className='btnText'>Enviar</span>
+                                    <i className='uil uil-navigator'></i>
+                                </button>
+                            </NavLink>
+                        </center>
                     </div>
                 </div>
-
-                <div className='details ID'>
-                    <span className='title'>Información del destinatario</span>
-
-                    <div className='fields'>
-                        <div className='input-field'>
-                            <label>Nombre quien recibe</label>
-                            <input type='text' placeholder='Ingrese los nombres y apellidos' required />
-                        </div>
-
-                        <div className='input-field'>
-                            <label>No. de contacto</label>
-                            <input type='number' placeholder='Ingrese el número de celular' required />
-                        </div>
-
-                        <div className='input-field'>
-                            <label>Ciudad</label>
-                            <select required>
-                                <option disabled selected>Seleccione una ciudad</option>
-                                <option value='santa-marta'>Santa Marta</option>
-                                <option value='barranquilla'>Barranquilla</option>
-                                <option value='cartagena'>Cartagena</option>
-                                <option value='bogota'>Bogotá</option>
-                            </select>
-                        </div>
-
-                        <div className='input-field'>
-                            <label>País</label>
-                            <select required>
-                                <option disabled selected>Seleccione un país</option>
-                                <option value='santa-marta'>Colombia</option>
-                                <option value='barranquilla'>Estados Unidos</option>
-                                <option value='cartagena'>España</option>
-                                <option value='bogota'>Argentina</option>
-                            </select>
-                        </div>
-
-                        <div className="input-field">
-                            <label>Número de documento</label>
-                            <input type="number" placeholder='Ingrese el número de documento' />
-                        </div>
-
-                        <div className='input-field'>
-                            <label>Dirección de residencia</label>
-                            <input type='text' placeholder='Ingrese la dirección del destinatario' required />
-                        </div>
-                    </div>
-                    <center>
-                        <NavLink to='/factura'>
-                            <button>
-                                <span className='btnText'>Enviar</span>
-                                <i className='uil uil-navigator'></i>
-                            </button>
-                        </NavLink>
-                    </center>
-                </div> 
-            </div>
             </form>
         </div>
     )
