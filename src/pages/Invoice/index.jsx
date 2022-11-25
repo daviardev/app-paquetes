@@ -1,57 +1,53 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { useAuthContext } from '../../context/AuthContext'
-
 import './styles.scss'
 
 const Invoice = () => {
-    const appContext = useAuthContext()
-    console.log(appContext)
     return <>
         <div className='container'>
             <header>Factura</header>
-            <form action='#'>
+            <form>
             <div className='form first'>
                 <div className='details personal'>
                     <div className='fields'>
                         <div className='input-field'>
-                            <label>Número de envío</label>
-                            <input type='text' placeholder='Ingrese el número de envío' required />
+                            <strong>Número de envío</strong>
+                            <p>#2409202201</p>
                         </div>
 
                         <div className='input-field'>
-                            <label>Cliente</label>
-                            <input type='text' placeholder='Ingrese sus nombres y apellidos' required />
+                            <strong>Cliente</strong>
+                            <p>Jerson David Silva Arjona</p>
                         </div>
 
                         <div className='input-field'>
-                            <label>Fecha de envío</label>
-                            <input type='date' required />
+                            <strong>Fecha de envío</strong>
+                            <p>Hoy</p>
                         </div>
 
                         <div className='input-field'>
-                            <label>Fecha de entrega</label>
-                            <input type="date" required />
+                            <strong>Fecha de entrega</strong>
+                            <p>2 días</p>
                         </div>
 
                         <div className='input-field'>
-                            <label>Número de factura</label>
-                            <input type='number' placeholder='Ingrese el número de factura' required />
+                            <strong>Número de factura</strong>
+                            <p>#099983242</p>
                         </div>
 
                         <div className='input-field'>
-                            <label>Tipo de factura</label>
+                            <strong>Tipo de factura</strong>
                             <select required>
                                 <option disabled selected>Seleccione una opción</option>
-                                <option value='santa-marta'>Contado</option>
-                                <option value='barranquilla'>Línea</option>
+                                <option value='contado'>Contado</option>
+                                <option value='linea'>Línea</option>
                             </select>
                         </div>
 
                         <div className="input-field">
-                            <label>Número de documento</label>
-                            <input type="number" placeholder='Ingrese su número de documento' />
+                            <strong>Número de documento</strong>
+                            <p>1045759468</p>
                         </div>
                     </div>
                 </div>
