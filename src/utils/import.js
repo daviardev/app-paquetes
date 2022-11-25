@@ -1,6 +1,5 @@
 // Import pages
 import Home from '../pages/Home'
-import Login from '../pages/Login'
 import Detail from '../pages/Detail'
 import Invoice from '../pages/Invoice'
 import NotFound from '../pages/NotFound'
@@ -20,7 +19,6 @@ import Card from '../components/Card'
 export {
     Home,
     Card,
-    Login,
     Detail,
     Invoice,
     NotFound,
