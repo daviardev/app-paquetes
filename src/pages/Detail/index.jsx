@@ -110,7 +110,7 @@ const Detail = () => {
 
                                     <div className='input-field'>
                                         <strong>Dirección</strong>
-                                        <p>Cra sur 32 #21-44</p>
+                                        <p>{data.direccion_recibe}</p>
                                     </div>
 
                                     <div className='input-field'>
