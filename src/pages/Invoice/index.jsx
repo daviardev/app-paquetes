@@ -29,10 +29,10 @@ const Invoice = () => {
         <div className='container'>
             <header>Factura</header>
             <form>
-                <div className='form first'>
-                    <div className='details personal'>
                         {
                             get.map(data => (
+                            <div className='form first'>
+                                <div className='details personal'>
                                 <div key={data.id} className="fields">
                                     <div className='input-field'>
                                         <strong>Número de envío</strong>
@@ -61,10 +61,10 @@ const Invoice = () => {
 
                                     <div className='input-field'>
                                         <strong>Tipo de factura</strong>
-                                        <select required>
+                                        <select name='tipo_factura' required>
                                             <option disabled selected>Seleccione una opción</option>
-                                            <option value='contado'>Contado</option>
-                                            <option value='linea'>Línea</option>
+                                            <option value='Contado'>Contado</option>
+                                            <option value='Linea'>Línea</option>
                                         </select>
                                     </div>
 
@@ -73,18 +73,18 @@ const Invoice = () => {
                                         <p>{data.cc_cliente}</p>
                                     </div>
                                 </div>
+                            </div>
+                            <center>
+                                <NavLink to='/detalle'>
+                                    <button>
+                                        <span className='btnText'>Realizar pago</span>
+                                        <i className='uil uil-navigator'></i>
+                                    </button>
+                                </NavLink>
+                            </center>
+                        </div>
                             ))
                         }
-                    </div>
-                    <center>
-                        <NavLink to='/detalle'>
-                            <button>
-                                <span className='btnText'>Realizar pago</span>
-                                <i className='uil uil-navigator'></i>
-                            </button>
-                        </NavLink>
-                    </center>
-                </div>
             </form>
         </div>
     </>
