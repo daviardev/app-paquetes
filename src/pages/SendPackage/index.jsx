@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import { db } from '../../services/client'
-import { collection, addDoc } from 'firebase/firestore'
+import { sendPackage } from '../../services/client'
 
 import './styles.scss'
 
 const SendPackage = () => {
+    const navigate = useNavigate()
+
     const [input, setInput] = useState({
         // Datos cliente
         paquete: '',
@@ -24,38 +25,39 @@ const SendPackage = () => {
         direccion_recibe: ''
     })
 
-    const handleChange = ({ target: {name, value} }) => {
+    const handleChange = ({ target: { name, value } }) => {
         setInput({ ...input, [name]: value })
     }
-    const sendPack = async () => {
-        try {
-            return await addDoc(collection(db, 'envios'), {
-                // Datos cliente
-                paquete: input.paquete,
-                cc_cliente: input.cc_cliente,
-                ciudad_cliente: input.ciudad_cliente,
-                nombre_cliente: input.nombre_cliente,
-                telefono_cliente: input.telefono_cliente,
-                direccion_cliente: input.direccion_cliente,
-                // Datos recibe
-                cc_recibe: input.cc_recibe,
-                pais_recibe: input.pais_recibe,
-                ciudad_recibe: input.ciudad_recibe,
-                nombre_recibe: input.nombre_recibe,
-                telefono_recibe: input.telefono_recibe,
-                direccion_recibe: input.direccion_recibe
-            })
-        } catch (error) {
-            console.error(error)
-        }
-    }
+
     const handleSubmit = e => {
         e.preventDefault()
+        sendPackage({
+            // Datos cliente
+            paquete: input.paquete,
+            cc_cliente: input.cc_cliente,
+            ciudad_cliente: input.ciudad_cliente,
+            nombre_cliente: input.nombre_cliente,
+            telefono_cliente: input.telefono_cliente,
+            direccion_cliente: input.direccion_cliente,
+            // Datos recibe
+            cc_recibe: input.cc_recibe,
+            pais_recibe: input.pais_recibe,
+            ciudad_recibe: input.ciudad_recibe,
+            nombre_recibe: input.nombre_recibe,
+            telefono_recibe: input.telefono_recibe,
+            direccion_recibe: input.direccion_recibe
+        })
+        .then(() => {
+            navigate('/factura')
+        }).catch((error) => {
+            console.error(error)
+        })
     }
+    const buttonIsDisabled = true
     return (
         <div className='container'>
             <header>Solicitud de envío de paquetes</header>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div className='form first'>
                     <div className='details personal'>
                         <span className='title'>Información del cliente</span>
@@ -150,12 +152,10 @@ const SendPackage = () => {
                             </div>
                         </div>
                         <center>
-                            <NavLink to='/factura'>
-                                <button onClick={sendPack}>
+                                <button onClick={handleSubmit}>
                                     <span className='btnText'>Enviar</span>
                                     <i className='uil uil-navigator'></i>
                                 </button>
-                            </NavLink>
                         </center>
                     </div>
                 </div>
