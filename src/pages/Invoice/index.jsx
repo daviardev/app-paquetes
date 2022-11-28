@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { db } from '../../services/client'
-import { collection, orderBy, getDocs } from 'firebase/firestore'
+import { collection, orderBy, onSnapshot, query } from 'firebase/firestore'
 
 import './styles.scss'
 
@@ -11,15 +11,13 @@ const Invoice = () => {
         useEffect(() => {
             const getPackage = async () => {
                 try {
-                    const querySnapshot = await getDocs(
-                        collection(db, 'envios'),
-                        orderBy('createdAt','desc')
-                    )
-                    const docs = []
-                    querySnapshot.forEach((doc) => {
-                        docs.push({ ...doc.data(), id: doc.id })
+                    const collectionRef = collection(db, 'envios')
+                    const order = query(collectionRef, orderBy('createdAt', 'asc'))
+    
+                    const unSub = onSnapshot(order, (snapshot) => {
+                        setGet(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
                     })
-                    setGet(docs)
+                    return unSub
                 } catch (error) {
                     console.error(error)
                 }
