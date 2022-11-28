@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { db } from '../../services/client'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, orderBy } from 'firebase/firestore'
 
 const Detail = () => {
     const [get, setGet] = useState([])
@@ -9,7 +9,10 @@ const Detail = () => {
     useEffect(() => {
         const getPackage = async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, 'envios'))
+                const querySnapshot = await getDocs (
+                    collection(db, 'envios'),
+                    orderBy('createdAt', 'desc')
+                )
                 const docs = []
                 querySnapshot.forEach((doc) => {
                     docs.push({ ...doc.data(), id: doc.id })

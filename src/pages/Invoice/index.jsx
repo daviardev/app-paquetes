@@ -1,30 +1,31 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { db } from '../../services/client'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, orderBy, getDocs } from 'firebase/firestore'
 
 import './styles.scss'
 
 const Invoice = () => {
-    const [get, setGet] = useState([])
-
-    useEffect(() => {
-        const getPackage = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'envios'))
-                const docs = []
-                querySnapshot.forEach((doc) => {
-                    docs.push({ ...doc.data(), id: doc.id })
-                })
-                setGet(docs)
-            } catch (error) {
-                console.error(error)
+        const [get, setGet] = useState([])
+        useEffect(() => {
+            const getPackage = async () => {
+                try {
+                    const querySnapshot = await getDocs(
+                        collection(db, 'envios'),
+                        orderBy('createdAt','desc')
+                    )
+                    const docs = []
+                    querySnapshot.forEach((doc) => {
+                        docs.push({ ...doc.data(), id: doc.id })
+                    })
+                    setGet(docs)
+                } catch (error) {
+                    console.error(error)
+                }
             }
-        }
-        getPackage()
-    }, [get])
+            getPackage()
+        }, [get])
     return <>
         <div className='container'>
             <header>Factura</header>
