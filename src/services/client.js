@@ -30,15 +30,3 @@ export const sendPackage = async ({paquete, cc_cliente, ciudad_cliente, nombre_c
         createdAt: Timestamp.fromDate(new Date())
     })
 }
-
-// const mapPackageSends = (doc) => {
-//     const data = doc.data()
-//     const id = doc.id
-//     const { createdAt } = data
-
-//     return {
-//         id,
-//         ...data,
-//         createdAt: +createdAt.toDate()
-//     }
-// }
