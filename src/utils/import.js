@@ -9,10 +9,6 @@ import SendPackage from '../pages/SendPackage'
 export { default as NavBar } from '../containers/NavBar'
 export { default as Footer } from '../containers/Footer'
 
-// Import icons
-import { FaUserAlt } from 'react-icons/fa'
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-
 // import components
 import Card from '../components/Card'
 
@@ -22,8 +18,5 @@ export {
     Detail,
     Invoice,
     NotFound,
-    FaUserAlt,
-    SendPackage,
-    AiOutlineMenu,
-    AiOutlineClose
+    SendPackage
 }
