@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
 
 import { db } from '../../services/client'
 import { collection, orderBy, onSnapshot, query } from 'firebase/firestore'
@@ -8,6 +7,7 @@ import './styles.scss'
 
 const Invoice = () => {
         const [get, setGet] = useState([])
+
         useEffect(() => {
             const getPackage = async () => {
                 try {
@@ -35,7 +35,7 @@ const Invoice = () => {
                                 <div key={data.id} className="fields">
                                     <div className='input-field'>
                                         <strong>Número de envío</strong>
-                                        <p>#2409202201</p>
+                                        <p>{data.id}</p>
                                     </div>
 
                                     <div className='input-field'>
@@ -54,11 +54,6 @@ const Invoice = () => {
                                     </div>
 
                                     <div className='input-field'>
-                                        <strong>Número de factura</strong>
-                                        <p>#099983242</p>
-                                    </div>
-
-                                    <div className='input-field'>
                                         <strong>Tipo de factura</strong>
                                         <select name='tipo_factura' required>
                                             <option disabled selected>Seleccione una opción</option>
@@ -74,12 +69,9 @@ const Invoice = () => {
                                 </div>
                             </div>
                             <center>
-                                <NavLink to='/detalle'>
                                     <button>
                                         <span className='btnText'>Realizar pago</span>
-                                        <i className='uil uil-navigator'></i>
                                     </button>
-                                </NavLink>
                             </center>
                         </div>
                             ))
