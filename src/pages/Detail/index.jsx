@@ -1,27 +1,40 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { db } from '../../services/client'
-import { collection, orderBy, onSnapshot, query } from 'firebase/firestore'
+import { collection, doc, getDoc, onSnapshot, query } from 'firebase/firestore'
 
 const Detail = () => {
     const [get, setGet] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         const getPackage = async () => {
             try {
-                const collectionRef = collection(db, 'envios')
-                const order = query(collectionRef, orderBy('createdAt', 'asc'))
+                let search = window.prompt('Ingrese el número de su factura')
 
-                const unSub = onSnapshot(order, (snapshot) => {
-                    setGet(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-                })
-                return unSub
+                const collectionRef = collection(db, 'envios')
+                const q = query(collectionRef)
+
+                const result = doc(collectionRef, search)
+                const docSnap = await getDoc(result)
+                
+                if(docSnap.exists()) {
+                    const unSub = onSnapshot(q, (snapshot) => {
+                        setGet(snapshot.docs.map(() => ({ ...docSnap.data(), id: docSnap.id })))
+                    })
+                    return unSub
+                } else {
+                    window.alert(`El número de guia ${search}, no existe`)
+                    navigate('/')
+
+                }
             } catch (error) {
                 console.error(error)
             }
         }
         getPackage()
-    }, [get])
+    }, [])
     return (
         <div className='container'>
             <header>DETALLES</header>
@@ -31,7 +44,7 @@ const Detail = () => {
                         <div className='form first'>
                             <div className='details personal'>
                                 <strong className='title'>Remitente / Origen</strong>
-                                <h1>Guia #3218334</h1>
+                                <h1>Guia {data.id}</h1>
                                 <div className='fields'>
                                     <div className='input-field'>
                                         <strong>Ciudad de recogida</strong>
