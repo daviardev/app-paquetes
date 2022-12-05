@@ -14,7 +14,7 @@
     top: 40%;
     border: 2px solid var(--first-color);
     border-radius: 20px;
-    transform: rotate(89.42deg);   
+    transform: rotate(89.42deg);
 }
 
 .card__title {
@@ -28,13 +28,13 @@
     position: absolute;
     width: 450px;
     left: 9%;
-    top: 38%;    
+    top: 38%;
     font-size: 20px;
     line-height: 24px;
     color: #000000;
 }
 
-.search__container { 
+.search__container {
     top: 64.2%;
     left: 35%;
     width: 423px;
@@ -61,7 +61,7 @@
         border: none;
         background: #fff;
         outline: none;
-        font-size: 19px;
+        font-size: 15px;
 
         &::placeholder {
             font-size: 18px;
@@ -103,31 +103,69 @@
 }
 
 @media screen and (max-width: 620px) {
-  
-.card__line {
-    width: 99.01px;
-    left: -4%;
-}
 
-.card__p {
-    top: 35%;
-    font-size: 20px;
-}
+    .card__line {
+        width: 99.01px;
+        left: -4%;
+    }
 
-.search__container { 
-    left: 8%;
-    top: 68%;
-}
+    .card__p {
+        top: 35%;
+        font-size: 20px;
+    }
 
-   .img {
-    opacity: 0;
-    left: 0;
-   }
+    .search__container {
+        left: 8%;
+        top: 68%;
+    }
+
+    .img {
+        opacity: 0;
+        left: 0;
+    }
 }
 
 @media screen and (max-width: 1024px) {
     .img {
         opacity: 0;
         left: 0;
+    }
+
+    .card__line {
+        margin-left: -12%;
+        margin-top: -20px;
+        width: 150px;
+    }
+
+    .card__p {
+        width: 90%;
+    }
+
+    .search__container {
+        top: 64.2%;
+        left: 7%;
+        width: 323px;
+
+        p {
+            font-size: 13px;
+            top: 26px;
+        }
+    
+        input {
+            font-size: 15px;
+            width: 130px;
+
+            &::placeholder {
+                font-size: 13px;
+            }
+        }
+    
+        button {
+            left: 81%;
+        }
+    }
+
+    .card__title {
+        width: 90%;
     }
 }
