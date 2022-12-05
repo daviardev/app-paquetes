@@ -1,13 +1,19 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { WiDirectionRight } from 'react-icons/wi'
-
+import { $ } from '../../utils/dom'
 import { Card } from '../../utils/import'
+import { WiDirectionRight } from 'react-icons/wi'
 
 import './styles.scss'
 
 const Home = () => {
+    const navigate = useNavigate()
+    const [search, setSearch] = useState(null)
+    const handleSearch = e => {
+        e.preventDefault()
+        navigate('/detalle')
+    }
     return <>
     <div className="home__container">
         <div className="card__content">
@@ -16,12 +22,8 @@ const Home = () => {
             <p className='card__p'>La distancia mas corta entre usted y sus paquetes no es una linea recta, es PQENTREGA.</p>
             <div className="search__container">
                 <p>Consultar envío</p>
-                <input type="text" placeholder='Ingresa el # de envío' required />
-                <NavLink to='/detalle'>
-                    <button>
-                        <WiDirectionRight className='icon' />
-                    </button>
-                </NavLink>
+                <input id='guia' type="text" placeholder='Ingresa el # de envío' onChange={e => setSearch(e.target.value)} />
+                <button onClick={handleSearch}><WiDirectionRight className='icon' /></button>
             </div>
         </div>
         <div className='img'/>
