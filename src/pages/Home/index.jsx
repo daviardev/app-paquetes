@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { $ } from '../../utils/dom'
 import { Card } from '../../utils/import'
 import { WiDirectionRight } from 'react-icons/wi'
 
@@ -9,7 +8,7 @@ import './styles.scss'
 
 const Home = () => {
     const navigate = useNavigate()
-    const [search, setSearch] = useState(null)
+
     const handleSearch = e => {
         e.preventDefault()
         navigate('/detalle')
@@ -22,7 +21,6 @@ const Home = () => {
             <p className='card__p'>La distancia mas corta entre usted y sus paquetes no es una linea recta, es PQENTREGA.</p>
             <div className="search__container">
                 <p>Consultar envío</p>
-                <input id='guia' type="text" placeholder='Ingresa el # de envío' onChange={e => setSearch(e.target.value)} />
                 <button onClick={handleSearch}><WiDirectionRight className='icon' /></button>
             </div>
         </div>
