@@ -7,7 +7,6 @@ import './styles.scss'
 
 const SendPackage = () => {
     const navigate = useNavigate()
-
     const [input, setInput] = useState({
         // Datos cliente
         paquete: '',
@@ -28,7 +27,7 @@ const SendPackage = () => {
     const handleChange = ({ target: { name, value } }) => {
         setInput({ ...input, [name]: value })
     }
-
+    
     const handleSubmit = e => {
         e.preventDefault()
         sendPackage({
@@ -53,7 +52,7 @@ const SendPackage = () => {
             console.error(error)
         })
     }
-    const buttonIsDisabled = true
+
     return (
         <div className='container'>
             <header>Solicitud de envío de paquetes</header>
