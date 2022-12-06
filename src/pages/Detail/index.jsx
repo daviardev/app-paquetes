@@ -25,9 +25,8 @@ const Detail = () => {
                     })
                     return unSub
                 } else {
-                    window.alert(`El número de guia ${search}, no existe`)
+                    window.alert(`El número de guia ${search}, no existe.`)
                     navigate('/')
-
                 }
             } catch (error) {
                 console.error(error)
