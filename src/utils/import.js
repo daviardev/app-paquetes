@@ -4,6 +4,7 @@ import Detail from '../pages/Detail'
 import Invoice from '../pages/Invoice'
 import AboutUs from '../pages/AboutUs'
 import NotFound from '../pages/NotFound'
+import ContactUs from '../pages/ContactUs'
 import SendPackage from '../pages/SendPackage'
 
 // Import containers
@@ -20,5 +21,6 @@ export {
     Invoice,
     AboutUs,
     NotFound,
+    ContactUs,
     SendPackage
 }
