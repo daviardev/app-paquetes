@@ -2,6 +2,7 @@
 import Home from '../pages/Home'
 import Detail from '../pages/Detail'
 import Invoice from '../pages/Invoice'
+import AboutUs from '../pages/AboutUs'
 import NotFound from '../pages/NotFound'
 import SendPackage from '../pages/SendPackage'
 
@@ -17,6 +18,7 @@ export {
     Card,
     Detail,
     Invoice,
+    AboutUs,
     NotFound,
     SendPackage
 }
