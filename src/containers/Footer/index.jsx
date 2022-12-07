@@ -6,9 +6,10 @@ import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/all'
 import './styles.scss'
 
 const Footer = () => {
-    return <>
-      <footer className="footer">
+  return <>
+    <footer className="footer">
       <div className="footer__container">
+
         <div className="footer__section">
           <span className="footer__category">Sobre pqentrega</span>
           <NavLink to="/">Promociones</NavLink>
@@ -17,6 +18,7 @@ const Footer = () => {
           <NavLink to="/">Contrato pqentrega</NavLink>
           <NavLink to="/">Protección de datos personales</NavLink>
         </div>
+
         <div className="footer__section">
           <span className="footer__category">Links de interés</span>
           <NavLink to="/">Noticias</NavLink>
@@ -32,6 +34,7 @@ const Footer = () => {
           <NavLink to="/">Contacto</NavLink>
           <NavLink to="/">Nuestra red</NavLink>
         </div>
+        
         <div className="footer__section social-media">
           <span className="footer__category">Siguenos en</span>
           <div className="social-media__container">
@@ -43,7 +46,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-    </>
+  </>
 }
 
 export default Footer

@@ -8,7 +8,7 @@ import './index.css'
 import App from './App'
 
 ReactDOM.createRoot($('#root')).render(
-    <Router>
-      <App />
-    </Router>
+  <Router>
+    <App />
+  </Router>
 )

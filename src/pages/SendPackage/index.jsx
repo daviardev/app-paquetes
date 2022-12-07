@@ -27,7 +27,7 @@ const SendPackage = () => {
     const handleChange = ({ target: { name, value } }) => {
         setInput({ ...input, [name]: value })
     }
-    
+
     const handleSubmit = e => {
         e.preventDefault()
         sendPackage({
@@ -46,11 +46,11 @@ const SendPackage = () => {
             telefono_recibe: input.telefono_recibe,
             direccion_recibe: input.direccion_recibe
         })
-        .then(() => {
-            navigate('/factura')
-        }).catch((error) => {
-            console.error(error)
-        })
+            .then(() => {
+                navigate('/factura')
+            }).catch((error) => {
+                console.error(error)
+            })
     }
 
     return (
@@ -151,10 +151,10 @@ const SendPackage = () => {
                             </div>
                         </div>
                         <center>
-                                <button onClick={handleSubmit}>
-                                    <span className='btnText'>Enviar</span>
-                                    <i className='uil uil-navigator'></i>
-                                </button>
+                            <button onClick={handleSubmit}>
+                                <span className='btnText'>Enviar</span>
+                                <i className='uil uil-navigator'></i>
+                            </button>
                         </center>
                     </div>
                 </div>

@@ -9,29 +9,29 @@
 }
 
 .card__line {
-    position: absolute;
-    width: 200px;
     top: 40%;
+    width: 200px;
     border: 2px solid var(--first-color);
+    position: absolute;
     border-radius: 20px;
     transform: rotate(89.42deg);
 }
 
 .card__title {
-    position: absolute;
-    width: 450px;
-    left: 9%;
     top: 27%;
+    left: 9%;
+    width: 450px;
+    position: absolute;
 }
 
 .card__p {
-    position: absolute;
-    width: 450px;
-    left: 9%;
     top: 38%;
+    color: #000000;
+    left: 9%;
+    width: 450px;
+    position: absolute;
     font-size: 20px;
     line-height: 24px;
-    color: #000000;
 }
 
 .search__container {
@@ -39,29 +39,29 @@
     left: 45%;
     width: 223px;
     height: 70px;
-    position: absolute;
     z-index: 1;
+    position: absolute;
     background: #FFFFFF;
-    border-radius: 51px;
     box-shadow: 0px 5px 25px rgb(159 158 158 / 25%);
+    border-radius: 51px;
 
     p {
+        top: 30%;
+        left: 20px;
         position: absolute;
         font-size: 17px;
-        left: 20px;
-        top: 30%;
     }
 
     button {
-        position: absolute;
+        left: 74%;
         width: 39px;
         height: 39px;
-        left: 74%;
+        cursor: pointer;
         bottom: 15px;
+        border: none;
+        position: absolute;
         background: var(--first-color);
         border-radius: 50%;
-        cursor: pointer;
-        border: none;
 
         &:hover {
             background: var(--first-color-dark);
@@ -70,8 +70,8 @@
 }
 
 .icon {
-    font-size: 40px;
     color: #fff;
+    font-size: 40px;
 }
 
 .img {
@@ -86,10 +86,9 @@
 }
 
 @media screen and (max-width: 620px) {
-
     .card__line {
-        width: 99.01px;
         left: -4%;
+        width: 99.01px;
     }
 
     .card__p {
@@ -103,21 +102,21 @@
     }
 
     .img {
-        opacity: 0;
         left: 0;
+        opacity: 0;
     }
 }
 
 @media screen and (max-width: 1024px) {
     .img {
-        opacity: 0;
         left: 0;
+        opacity: 0;
     }
 
     .card__line {
+        width: 150px;
         margin-left: -12%;
         margin-top: -20px;
-        width: 150px;
     }
 
     .card__p {

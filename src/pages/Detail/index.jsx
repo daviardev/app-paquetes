@@ -5,8 +5,8 @@ import { db } from '../../services/client'
 import { collection, doc, getDoc, onSnapshot, query } from 'firebase/firestore'
 
 const Detail = () => {
-    const [get, setGet] = useState([])
     const navigate = useNavigate()
+    const [get, setGet] = useState([])
 
     useEffect(() => {
         const getPackage = async () => {
@@ -18,8 +18,8 @@ const Detail = () => {
 
                 const result = doc(collectionRef, search)
                 const docSnap = await getDoc(result)
-                
-                if(docSnap.exists()) {
+
+                if (docSnap.exists()) {
                     const unSub = onSnapshot(q, (snapshot) => {
                         setGet(snapshot.docs.map(() => ({ ...docSnap.data(), id: docSnap.id })))
                     })
@@ -42,8 +42,9 @@ const Detail = () => {
                     get.map(data => (
                         <div className='form first'>
                             <div className='details personal'>
-                                <strong className='title'>Remitente / Origen</strong>
+                                <strong className='title'>Remitente | Origen</strong>
                                 <h1>Guia {data.id}</h1>
+                                
                                 <div className='fields'>
                                     <div className='input-field'>
                                         <strong>Ciudad de recogida</strong>
@@ -88,7 +89,7 @@ const Detail = () => {
                             </div>
 
                             <div className='details ID'>
-                                <strong className='title'>Destinatario / Destino</strong>
+                                <strong className='title'>Destinatario | Destino</strong>
 
                                 <div className='fields'>
                                     <div className='input-field'>

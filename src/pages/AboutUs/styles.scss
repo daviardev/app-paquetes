@@ -3,22 +3,23 @@
 }
 
 .container__images {
-    display: flex;
     width: 100%;
+    margin: auto;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: auto;
 
     .content_img {
-        overflow: hidden;
         margin: 20px;
+        overflow: hidden;
+
         img {
             width: 124px;
             height: 126px;
-            border-radius: 50%;
-            align-items: center;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             margin: 23px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            align-items: center;
+            border-radius: 50%;
 
             -webkit-filter: grayscale(1);
         }

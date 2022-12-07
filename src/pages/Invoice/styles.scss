@@ -1,140 +1,163 @@
-.container{
+.container {
     left: 250px;
     margin: 0 15px;
     padding: 30px;
     position: relative;
     max-width: 900px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     min-height: 100vh;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     background-color: #fff;
 }
-.container header{
+
+.container header {
+    color: #333;
     position: relative;
     font-size: 20px;
     font-weight: 600;
-    color: #333;
 }
-.container header::before{
-    content: "";
-    position: absolute;
+
+.container header::before {
     left: 0;
+    width: 27px;
+    content: "";
     bottom: -2px;
     height: 3px;
-    width: 27px;
+    position: absolute;
     border-radius: 8px;
     background-color: var(--first-color);
 }
-.container form{
+
+.container form {
     position: relative;
+    overflow: hidden;
     margin-top: 16px;
     min-height: 490px;
     background-color: #fff;
-    overflow: hidden;
 }
-.container form .form{
+
+.container form .form {
     position: absolute;
-    background-color: #fff;
     transition: 0.3s ease;
+    background-color: #fff;
 }
-.container form .form.second{
+
+.container form .form.second {
     opacity: 0;
-    pointer-events: none;
     transform: translateX(100%);
+    pointer-events: none;
 }
-form.secActive .form.second{
+
+form.secActive .form.second {
     opacity: 1;
     pointer-events: auto;
     transform: translateX(0);
 }
-form.secActive .form.first{
+
+form.secActive .form.first {
     opacity: 0;
     pointer-events: none;
     transform: translateX(-100%);
 }
-.container form .title{
+
+.container form .title {
+    color: #333;
+    margin: 6px 0;
     display: block;
-    margin-bottom: 8px;
     font-size: 16px;
     font-weight: 500;
-    margin: 6px 0;
-    color: #333;
+    margin-bottom: 8px;
 }
-.container form .fields{
+
+.container form .fields {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
 }
-form .fields .input-field{
-    display: flex;
+
+form .fields .input-field {
     width: calc(100% / 3 - 15px);
-    flex-direction: column;
     margin: 4px 0;
+    display: flex;
+    flex-direction: column;
 }
-.input-field label{
+
+.input-field label {
+    color: #2e2e2e;
     font-size: 12px;
     font-weight: 500;
-    color: #2e2e2e;
 }
-.input-field input, select{
-    outline: none;
-    font-size: 14px;
-    font-weight: 400;
+
+.input-field input,
+select {
     color: #333;
-    border-radius: 5px;
     border: 1px solid #aaa;
-    padding: 0 15px;
     height: 42px;
     margin: 8px 0;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px;
 }
+
 .input-field input :focus,
-.input-field select:focus{
-    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+.input-field select:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
 }
+
 .input-field select,
-.input-field input[type="date"]{
+.input-field input[type="date"] {
     color: #707070;
 }
-.input-field input[type="date"]:valid{
+
+.input-field input[type="date"]:valid {
     color: #333;
 }
-.container form button{
-    display: flex;
+
+.container form button {
     left: 40%;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    max-width: 200px;
-    width: 100%;
-    border: none;
-    outline: none;
     color: #fff;
-    border-radius: 5px;
-    margin: 25px 0;
-    background-color: var(--first-color);
-    transition: all 0.3s linear;
+    width: 100%;
     cursor: pointer;
+    border: none;
+    height: 45px;
+    margin: 25px 0;
+    display: flex;
+    outline: none;
+    max-width: 200px;
+    transition: all 0.3s linear;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: center;
+    background-color: var(--first-color);
 }
-.container form .btnText{
+
+.container form .btnText {
     font-size: 14px;
     font-weight: 400;
 }
-form button:hover{
+
+form button:hover {
     background-color: var(--first-color-dark);
 }
+
 form button i,
-form i{
+form i {
     margin: 0 6px;
 }
-form i{
+
+form i {
     transform: rotate(180deg);
 }
-form .buttons{
+
+form .buttons {
     display: flex;
     align-items: center;
 }
-form .buttons button{
+
+form .buttons button {
     margin-right: 14px;
 }
 
@@ -142,19 +165,22 @@ form .buttons button{
     .container {
         left: 0;
     }
-    .container form{
+
+    .container form {
         overflow-y: scroll;
     }
-    .container form::-webkit-scrollbar{
-       display: none;
+
+    .container form::-webkit-scrollbar {
+        display: none;
     }
-    form .fields .input-field{
+
+    form .fields .input-field {
         width: calc(100% / 2 - 15px);
     }
 }
 
 @media (max-width: 550px) {
-    form .fields .input-field{
+    form .fields .input-field {
         width: 100%;
     }
 }

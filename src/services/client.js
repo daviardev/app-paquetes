@@ -8,12 +8,12 @@ const firebaseConfig = {
     storageBucket: import.meta.env.VITE_FIREBASE_STORAGEBUCKET,
     messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGINGSENDERID,
     appId: import.meta.env.VITE_FIREBASE_APPID
-  }
+}
 
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 
-export const sendPackage = async ({paquete, cc_cliente, ciudad_cliente, nombre_cliente, telefono_cliente, direccion_cliente, cc_recibe, pais_recibe, ciudad_recibe, nombre_recibe, telefono_recibe, direccion_recibe}) => {
+export const sendPackage = async ({ paquete, cc_cliente, ciudad_cliente, nombre_cliente, telefono_cliente, direccion_cliente, cc_recibe, pais_recibe, ciudad_recibe, nombre_recibe, telefono_recibe, direccion_recibe }) => {
     return await addDoc(collection(db, 'envios'), {
         paquete,
         cc_cliente,
@@ -21,6 +21,7 @@ export const sendPackage = async ({paquete, cc_cliente, ciudad_cliente, nombre_c
         nombre_cliente,
         telefono_cliente,
         direccion_cliente,
+
         cc_recibe,
         pais_recibe,
         ciudad_recibe,
