@@ -18,7 +18,7 @@ const NavBar = () => {
       <nav className={`nav-menu ${toggle && 'nav-toggle'}`}>
         <NavLink onClick={() => setToggle(false)} to='/'>Inicio</NavLink>
         <NavLink onClick={() => setToggle(false)} to='/envio'>Envio</NavLink>
-        <NavLink onClick={() => setToggle(false)} to='/sobre nosotros'>Sobre nosotros</NavLink>
+        <NavLink onClick={() => setToggle(false)} to='/sobre-nosotros'>Sobre nosotros</NavLink>
         <NavLink onClick={() => setToggle(false)} to='/contacto'>Contacto</NavLink>
       </nav>
       </section>
