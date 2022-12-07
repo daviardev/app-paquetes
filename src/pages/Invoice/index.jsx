@@ -8,6 +8,10 @@ import './styles.scss'
 const Invoice = () => {
     const [get, setGet] = useState([])
 
+    const today = new Date()
+
+    const now = today.toLocaleDateString()
+
     useEffect(() => {
         const getPackage = async () => {
             try {
@@ -33,7 +37,7 @@ const Invoice = () => {
                         <div className='form first'>
                             <div className='details personal'>
                                 <div key={data.id} className="fields">
-
+                                    
                                     <div className='input-field'>
                                         <strong>Número de envío</strong>
                                         <p>{data.id}</p>
@@ -46,12 +50,7 @@ const Invoice = () => {
 
                                     <div className='input-field'>
                                         <strong>Fecha de envío</strong>
-                                        <p>Hoy</p>
-                                    </div>
-
-                                    <div className='input-field'>
-                                        <strong>Fecha de entrega</strong>
-                                        <p>2 días</p>
+                                        <p>{now}</p>
                                     </div>
 
                                     <div className='input-field'>
@@ -70,7 +69,7 @@ const Invoice = () => {
                                 </div>
                             </div>
                             <center>
-                                <button>a<span className='btnText'>Realizar pago</span></button>
+                                <button><span className='btnText'>Realizar pago</span></button>
                             </center>
                         </div>
                     ))
