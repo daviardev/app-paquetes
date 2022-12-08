@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
+import jsPDF from 'jspdf'
+
+import { $ } from '../../utils/dom'
 import { db } from '../../services/client'
 import { collection, orderBy, onSnapshot, query } from 'firebase/firestore'
 
@@ -9,7 +12,6 @@ const Invoice = () => {
     const [get, setGet] = useState([])
 
     const today = new Date()
-
     const now = today.toLocaleDateString()
 
     useEffect(() => {
@@ -28,8 +30,19 @@ const Invoice = () => {
         }
         getPackage()
     }, [get])
+
+    const generatePDF = async (e) => {
+        e.preventDefault()
+
+        const doc = new jsPDF('landscape', 'pt', 'a3')
+        await doc.html($('#form'), {
+            callback: function(pdf) {
+                pdf.save('factura.pdf')
+            }
+        })
+    }
     return <>
-        <div className='container'>
+        <div id='form' className='container'>
             <header>Factura</header>
             <form>
                 {
@@ -55,7 +68,7 @@ const Invoice = () => {
 
                                     <div className='input-field'>
                                         <strong>Tipo de factura</strong>
-                                        <select name='tipo_factura' required>
+                                        <select value={data.factura} name='tipo_factura' required>
                                             <option disabled selected>Seleccione una opción</option>
                                             <option value='Contado'>Contado</option>
                                             <option value='Linea'>Línea</option>
@@ -69,7 +82,7 @@ const Invoice = () => {
                                 </div>
                             </div>
                             <center>
-                                <button><span className='btnText'>Realizar pago</span></button>
+                                <button onClick={generatePDF}><span className='btnText'>Realizar pago</span></button>
                             </center>
                         </div>
                     ))
