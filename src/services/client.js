@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore, Timestamp, collection, addDoc } from 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
-    authDomain: import.meta.env.VITE_FIREBASE_AUTHDOMAIN,
-    projectId: import.meta.env.VITE_FIREBASE_PROJECTID,
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGEBUCKET,
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGINGSENDERID,
-    appId: import.meta.env.VITE_FIREBASE_APPID
+    apiKey: "AIzaSyBCFxHO71qawyuI9QPqZ-Lb41RJAjS01EY",
+    authDomain: "db-paquetes-c7193.firebaseapp.com",
+    projectId: "db-paquetes-c7193",
+    storageBucket: "db-paquetes-c7193.appspot.com",
+    messagingSenderId: "416257868961",
+    appId: "1:416257868961:web:650826cdcc62dc5f61dce0"
 }
 
 const app = initializeApp(firebaseConfig)
